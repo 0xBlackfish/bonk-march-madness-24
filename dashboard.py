@@ -36,7 +36,7 @@ if not check_password():
     st.stop()  # Do not continue if check_password is not True.
 
 ## Read data from CSV files
-df_brackets = pd.read_csv('./bracket-data/brackets-final.csv')
+df_brackets = pd.read_csv('./bracket-data/brackets_final.csv')
 
 ## Create dashboard filters
 # student_id = st.selectbox("Choose a student:", list(df_engagement_attendance['student_id'].unique()))
