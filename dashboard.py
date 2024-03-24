@@ -126,6 +126,7 @@ df_brackets['r1_score'] = df_brackets['round_of_32'].apply(score_round_1)
 df_brackets['r2_score'] = df_brackets['sweet_16'].apply(score_round_2)
 df_brackets['total_score'] = df_brackets['r1_score'] + df_brackets['r2_score']
 df_brackets['bracket_owner'] = df_brackets['id'].apply(identify_pack_black_brackets)
+df_brackets['tensor_link'] = 'https://www.tensor.trade/item/'+df_brackets['id']
 
 ## List of NCAA tourney teams
 ncaa_tourney_teams = [
