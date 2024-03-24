@@ -101,7 +101,9 @@ def score_round_2(selections):
         'Iowa St.',
         'North Carolina',
         'Arizona',
-        'Gonzaga'
+        'Gonzaga',
+        'Tennessee',
+        'NC State'
     ]
 
     for team in selections:
