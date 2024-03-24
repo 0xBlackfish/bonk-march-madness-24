@@ -42,11 +42,20 @@ def parse_list(s):
         return ast.literal_eval(s)
     except (SyntaxError, ValueError):
         return None  # Return None if the parsing fails
+    
+def identify_pack_black_brackets(id):
+    if id in ['DJGxMzdoTHWEcqhfvhTUu7kRpjMDgqzL7zLbM7eGkjHa','H5sSq7Dno6EqpCuV9x73prdEzrvQ1xZiPNzGS7nLZV2D','H4zRWRAyZFy9DYthqL5PGWudeYjvZncnU1dTwQWzim6X','2YXW5wx1gKsMGvPjy1DnkRDPiT5q9uJN31oPA7N2bKj5','62J3LW5f49ZA8ThaWv6F6xvqmpMYjFPyVfF1hfY8ZnmK','8fYhWG9DECR9vc14ha2eeBXxok5aTFF3sriADnNaTtXQ']:
+        return 'Pack'
+    elif id in ['6r8ssRbo2XJiiD8g8kjMsBKJi8rA8itu29oShxoQ2kUD','7wzxEsco9CkmPBqzrFA6jZxaWTDzo3kyi1FPwgRz2TbK']:
+        return 'Black'
+    else:
+        return 'Loser'
+
 
 def score_round_1(selections):
     r1_score = 0
     r1_winners = [
-        'Uconn',
+        'UConn',
         'Northwestern',
         'San Diego St.',
         'Yale',
@@ -116,91 +125,107 @@ df_brackets = pd.read_csv(
 df_brackets['r1_score'] = df_brackets['round_of_32'].apply(score_round_1)
 df_brackets['r2_score'] = df_brackets['sweet_16'].apply(score_round_2)
 df_brackets['total_score'] = df_brackets['r1_score'] + df_brackets['r2_score']
+df_brackets['bracket_owner'] = df_brackets['id'].apply(identify_pack_black_brackets)
 
 ## List of NCAA tourney teams
-ncaa_tourney_teams = ['Akron',
- 'Alabama',
- 'Arizona',
- 'Auburn',
- 'BYU',
- 'Baylor',
- 'Boise St.',
- 'Charleston',
- 'Clemson',
- 'Colgate',
- 'Colorado',
- 'Colorado St.',
- 'Creighton',
- 'Dayton',
- 'Drake',
- 'Duke',
- 'Duquesne',
- 'Florida',
- 'Florida Atlantic',
- 'Gonzaga',
- 'Grambling St.',
- 'Grand Canyon',
- 'Houston',
- 'Howard',
- 'Illinois',
- 'Iowa St.',
- 'James Madison',
- 'Kansas',
- 'Kentucky',
- 'Long Beach St.',
- 'Longwood',
- 'Marquette',
- 'McNeese',
- 'Michigan St.',
- 'Mississippi St.',
- 'Montana St.',
- 'Morehead St.',
- 'NC St.',
- 'Nebraska',
- 'Nevada',
- 'New Mexico',
- 'North Carolina',
- 'Northwestern',
- 'Oakland',
- 'Oregon',
- 'Purdue',
- "Saint Mary's",
- "Saint Peter's",
- 'Samford',
- 'San Diego St.',
- 'South Carolina',
- 'South Dakota St.',
- 'Stetson',
- 'TCU',
- 'Tennessee',
- 'Texas',
- 'Texas A&M',
- 'Texas Tech',
- 'UAB',
- 'UConn',
- 'Utah St.',
- 'Vermont',
- 'Virginia',
- 'Wagner',
- 'Washington St.',
- 'Western Kentucky',
- 'Wisconsin',
- 'Yale']
+ncaa_tourney_teams = [
+    'All',
+    'Akron',
+    'Alabama',
+    'Arizona',
+    'Auburn',
+    'BYU',
+    'Baylor',
+    'Boise St.',
+    'Charleston',
+    'Clemson',
+    'Colgate',
+    'Colorado',
+    'Colorado St.',
+    'Creighton',
+    'Dayton',
+    'Drake',
+    'Duke',
+    'Duquesne',
+    'Florida',
+    'Florida Atlantic',
+    'Gonzaga',
+    'Grambling St.',
+    'Grand Canyon',
+    'Houston',
+    'Howard',
+    'Illinois',
+    'Iowa St.',
+    'James Madison',
+    'Kansas',
+    'Kentucky',
+    'Long Beach St.',
+    'Longwood',
+    'Marquette',
+    'McNeese',
+    'Michigan St.',
+    'Mississippi St.',
+    'Montana St.',
+    'Morehead St.',
+    'NC St.',
+    'Nebraska',
+    'Nevada',
+    'New Mexico',
+    'North Carolina',
+    'Northwestern',
+    'Oakland',
+    'Oregon',
+    'Purdue',
+    "Saint Mary's",
+    "Saint Peter's",
+    'Samford',
+    'San Diego St.',
+    'South Carolina',
+    'South Dakota St.',
+    'Stetson',
+    'TCU',
+    'Tennessee',
+    'Texas',
+    'Texas A&M',
+    'Texas Tech',
+    'UAB',
+    'UConn',
+    'Utah St.',
+    'Vermont',
+    'Virginia',
+    'Wagner',
+    'Washington St.',
+    'Western Kentucky',
+    'Wisconsin',
+    'Yale'
+]
 
 ## Create dashboard filters
-filter1, filter2, filter3, filter4, filter5, filter6 = st.columns(6)
+filter1, filter2, filter3, filter4, filter5, filter6, filter7 = st.columns(7)
 
 with filter1:
-    filter_winner = st.multiselect("Winner", ncaa_tourney_teams)
+    filter_winner = st.multiselect("Winner", ncaa_tourney_teams, 'All')
 with filter2:
-    filter_championship = st.multiselect("Championship", ncaa_tourney_teams)
+    filter_championship = st.multiselect("Championship", ncaa_tourney_teams, 'All')
 with filter3:
-    filter_final_four = st.multiselect("Final Four", ncaa_tourney_teams)
+    filter_final_four = st.multiselect("Final Four", ncaa_tourney_teams, 'All')
 with filter4:
-    filter_elite_8 = st.multiselect("Elite 8", ncaa_tourney_teams)
+    filter_elite_8 = st.multiselect("Elite 8", ncaa_tourney_teams, 'All')
 with filter5:
-    filter_sweet_16 = st.multiselect("Sweet 16", ncaa_tourney_teams)
+    filter_sweet_16 = st.multiselect("Sweet 16", ncaa_tourney_teams, 'All')
 with filter6:
-    filter_round_of_32 = st.multiselect("Round of 32", ncaa_tourney_teams)
+    filter_round_of_32 = st.multiselect("Round of 32", ncaa_tourney_teams, 'All')
+with filter7:
+    filter_pack_black = st.multiselect("Bracket Owner", ['All','Pack','Black','Loser'], 'All')
 
-st.dataframe(df_brackets.sort_values(by='total_score',ascending=False).reset_index(drop=True))
+df_filtered = df_brackets[
+    ((df_brackets['bracket_owner'].isin(filter_pack_black)) | ('All' in filter_pack_black)) &
+    ((df_brackets['winner'].isin(filter_winner)) | ('All' in filter_winner)) &
+    ((df_brackets['championship'].apply(lambda x: any(item in filter_championship for item in x))) | ('All' in filter_championship)) &
+    ((df_brackets['final_four'].apply(lambda x: any(item in filter_final_four for item in x))) | ('All' in filter_final_four)) &
+    ((df_brackets['elite_8'].apply(lambda x: any(item in filter_elite_8 for item in x))) | ('All' in filter_elite_8)) &
+    ((df_brackets['sweet_16'].apply(lambda x: any(item in filter_sweet_16 for item in x))) | ('All' in filter_sweet_16)) &
+    ((df_brackets['round_of_32'].apply(lambda x: any(item in filter_round_of_32 for item in x))) | ('All' in filter_round_of_32))
+]
+
+st.dataframe(df_filtered.sort_values(by='total_score',ascending=False).reset_index(drop=True),use_container_width=True)
