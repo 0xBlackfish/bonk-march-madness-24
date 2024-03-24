@@ -106,7 +106,8 @@ def score_round_2(selections):
         'NC State',
         'Illinois',
         'Creighton',
-        'Marquette'
+        'Marquette',
+        'Purdue'
     ]
 
     r2_ppr = 0
@@ -120,9 +121,7 @@ def score_round_2(selections):
         'Houston',
         'Texas A&M',
         'James Madison',
-        'Duke',
-        'Purdue',
-        'Utah St.'
+        'Duke'
     ]
 
     for team in selections:
@@ -154,7 +153,6 @@ def score_sweet_16(selections):
         'Duke',
         'Marquette',
         'Purdue',
-        'Utah St.',
         'Iowa St.',
         'North Carolina',
         'Arizona',
@@ -194,7 +192,6 @@ def score_elite_8(selections):
         'Duke',
         'Marquette',
         'Purdue',
-        'Utah St.',
         'Iowa St.',
         'North Carolina',
         'Arizona',
@@ -234,7 +231,6 @@ def score_final_four(selections):
         'Duke',
         'Marquette',
         'Purdue',
-        'Utah St.',
         'Iowa St.',
         'North Carolina',
         'Arizona',
@@ -274,7 +270,6 @@ def score_final(selections):
         'Duke',
         'Marquette',
         'Purdue',
-        'Utah St.',
         'Iowa St.',
         'North Carolina',
         'Arizona',
