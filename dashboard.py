@@ -108,11 +108,197 @@ def score_round_2(selections):
         'Creighton'
     ]
 
+    r2_ppr = 0
+    r2_remaining = [
+        'Grand Canyon',
+        'Alabama',
+        'Clemson',
+        'Baylor',
+        'Yale',
+        'San Diego St.',
+        'Houston',
+        'Texas A&M',
+        'James Madison',
+        'Duke',
+        'Colorado',
+        'Marquette',
+        'Purdue',
+        'Utah St.'
+    ]
+
     for team in selections:
         if team in r2_winners:
             r2_score += 2
+    
+    for team in selections:
+        if team in r2_remaining:
+            r2_ppr += 2
 
-    return r2_score
+    return r2_score, r2_ppr
+
+def score_sweet_16(selections):
+    s16_score = 0
+    s16_winners = [
+    ]
+
+    s16_ppr = 0
+    s16_remaining = [
+        'Grand Canyon',
+        'Alabama',
+        'Clemson',
+        'Baylor',
+        'Yale',
+        'San Diego St.',
+        'Houston',
+        'Texas A&M',
+        'James Madison',
+        'Duke',
+        'Colorado',
+        'Marquette',
+        'Purdue',
+        'Utah St.',
+        'Iowa St.',
+        'North Carolina',
+        'Arizona',
+        'Gonzaga',
+        'Tennessee',
+        'NC State',
+        'Illinois',
+        'Creighton'
+    ]
+
+    for team in selections:
+        if team in s16_winners:
+            s16_score += 4
+    
+    for team in selections:
+        if team in s16_remaining:
+            s16_ppr += 4
+
+    return s16_score, s16_ppr
+
+def score_elite_8(selections):
+    e8_score = 0
+    e8_winners = [
+    ]
+
+    e8_ppr = 0
+    e8_remaining = [
+        'Grand Canyon',
+        'Alabama',
+        'Clemson',
+        'Baylor',
+        'Yale',
+        'San Diego St.',
+        'Houston',
+        'Texas A&M',
+        'James Madison',
+        'Duke',
+        'Colorado',
+        'Marquette',
+        'Purdue',
+        'Utah St.',
+        'Iowa St.',
+        'North Carolina',
+        'Arizona',
+        'Gonzaga',
+        'Tennessee',
+        'NC State',
+        'Illinois',
+        'Creighton'
+    ]
+
+    for team in selections:
+        if team in e8_winners:
+            e8_score += 8
+    
+    for team in selections:
+        if team in e8_remaining:
+            e8_ppr += 8
+
+    return e8_score, e8_ppr
+
+def score_final_four(selections):
+    f4_score = 0
+    f4_winners = [
+    ]
+
+    f4_ppr = 0
+    f4_remaining = [
+        'Grand Canyon',
+        'Alabama',
+        'Clemson',
+        'Baylor',
+        'Yale',
+        'San Diego St.',
+        'Houston',
+        'Texas A&M',
+        'James Madison',
+        'Duke',
+        'Colorado',
+        'Marquette',
+        'Purdue',
+        'Utah St.',
+        'Iowa St.',
+        'North Carolina',
+        'Arizona',
+        'Gonzaga',
+        'Tennessee',
+        'NC State',
+        'Illinois',
+        'Creighton'
+    ]
+
+    for team in selections:
+        if team in f4_winners:
+            f4_score += 16
+    
+    for team in selections:
+        if team in f4_remaining:
+            f4_ppr += 16
+
+    return f4_score, f4_ppr
+
+def score_final(selections):
+    final_score = 0
+    final_winners = [
+    ]
+
+    final_ppr = 0
+    final_remaining = [
+        'Grand Canyon',
+        'Alabama',
+        'Clemson',
+        'Baylor',
+        'Yale',
+        'San Diego St.',
+        'Houston',
+        'Texas A&M',
+        'James Madison',
+        'Duke',
+        'Colorado',
+        'Marquette',
+        'Purdue',
+        'Utah St.',
+        'Iowa St.',
+        'North Carolina',
+        'Arizona',
+        'Gonzaga',
+        'Tennessee',
+        'NC State',
+        'Illinois',
+        'Creighton'
+    ]
+
+    for team in selections:
+        if team in final_winners:
+            final_score += 32
+    
+    for team in selections:
+        if team in final_remaining:
+            final_ppr += 32
+
+    return final_score, final_ppr
 
 ## Read data from CSV files
 df_brackets = pd.read_csv(
@@ -126,9 +312,21 @@ df_brackets = pd.read_csv(
     }
 )
 
-df_brackets['r1_score'] = df_brackets['round_of_32'].apply(score_round_1)
-df_brackets['r2_score'] = df_brackets['sweet_16'].apply(score_round_2)
+## Add Scores
+df_brackets['r1_score'] = df_brackets['round_of_32'].apply(lambda  x: score_round_1(x))
+df_brackets['r2_score'] = df_brackets['sweet_16'].apply(lambda x: score_round_2(x)[0])
 df_brackets['total_score'] = df_brackets['r1_score'] + df_brackets['r2_score']
+
+## Add Points Possible Remaining
+df_brackets['r2_ppr'] = df_brackets['sweet_16'].apply(lambda x: score_round_2(x)[1]) 
+df_brackets['s16_ppr'] = df_brackets['elite_8'].apply(lambda x: score_sweet_16(x)[1])
+df_brackets['e8_ppr'] = df_brackets['final_four'].apply(lambda x: score_elite_8(x)[1])
+df_brackets['f4_ppr'] = df_brackets['championship'].apply(lambda x: score_final_four(x)[1])
+df_brackets['final_ppr'] = df_brackets['winner'].apply(lambda x: score_final(x)[1])
+df_brackets['ppr'] = df_brackets['r2_ppr'] + df_brackets['s16_ppr'] + df_brackets['e8_ppr'] + df_brackets['f4_ppr'] + df_brackets['final_ppr']
+df_brackets.drop(columns=['r2_ppr','s16_ppr','e8_ppr','f4_ppr','final_ppr'],inplace=True)
+
+## Add Rank and Other Fields
 df_brackets['overall_rank'] = df_brackets['total_score'].rank(method='min', ascending=False)
 df_brackets['bracket_owner'] = df_brackets['id'].apply(identify_pack_black_brackets)
 df_brackets['tensor_link'] = 'https://www.tensor.trade/item/'+df_brackets['id']
