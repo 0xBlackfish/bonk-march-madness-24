@@ -107,21 +107,19 @@ def score_round_2(selections):
         'Illinois',
         'Creighton',
         'Marquette',
-        'Purdue'
+        'Purdue',
+        'Alabama',
+        'Clemson',
+        'Duke',
+        'UConn'
     ]
 
     r2_ppr = 0
     r2_remaining = [
-        'Grand Canyon',
-        'Alabama',
-        'Clemson',
-        'Baylor',
         'Yale',
         'San Diego St.',
         'Houston',
         'Texas A&M',
-        'James Madison',
-        'Duke'
     ]
 
     for team in selections:
@@ -141,15 +139,12 @@ def score_sweet_16(selections):
 
     s16_ppr = 0
     s16_remaining = [
-        'Grand Canyon',
         'Alabama',
         'Clemson',
-        'Baylor',
         'Yale',
         'San Diego St.',
         'Houston',
         'Texas A&M',
-        'James Madison',
         'Duke',
         'Marquette',
         'Purdue',
@@ -160,7 +155,8 @@ def score_sweet_16(selections):
         'Tennessee',
         'NC State',
         'Illinois',
-        'Creighton'
+        'Creighton',
+        'UConn'
     ]
 
     for team in selections:
@@ -180,15 +176,12 @@ def score_elite_8(selections):
 
     e8_ppr = 0
     e8_remaining = [
-        'Grand Canyon',
         'Alabama',
         'Clemson',
-        'Baylor',
         'Yale',
         'San Diego St.',
         'Houston',
         'Texas A&M',
-        'James Madison',
         'Duke',
         'Marquette',
         'Purdue',
@@ -199,7 +192,8 @@ def score_elite_8(selections):
         'Tennessee',
         'NC State',
         'Illinois',
-        'Creighton'
+        'Creighton',
+        'UConn'
     ]
 
     for team in selections:
@@ -219,15 +213,12 @@ def score_final_four(selections):
 
     f4_ppr = 0
     f4_remaining = [
-        'Grand Canyon',
         'Alabama',
         'Clemson',
-        'Baylor',
         'Yale',
         'San Diego St.',
         'Houston',
         'Texas A&M',
-        'James Madison',
         'Duke',
         'Marquette',
         'Purdue',
@@ -238,7 +229,8 @@ def score_final_four(selections):
         'Tennessee',
         'NC State',
         'Illinois',
-        'Creighton'
+        'Creighton',
+        'UConn'
     ]
 
     for team in selections:
@@ -258,15 +250,12 @@ def score_final(selections):
 
     final_ppr = 0
     final_remaining = [
-        'Grand Canyon',
         'Alabama',
         'Clemson',
-        'Baylor',
         'Yale',
         'San Diego St.',
         'Houston',
         'Texas A&M',
-        'James Madison',
         'Duke',
         'Marquette',
         'Purdue',
@@ -277,7 +266,8 @@ def score_final(selections):
         'Tennessee',
         'NC State',
         'Illinois',
-        'Creighton'
+        'Creighton',
+        'UConn'
     ]
 
     for team in selections:
