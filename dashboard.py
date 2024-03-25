@@ -111,15 +111,13 @@ def score_round_2(selections):
         'Alabama',
         'Clemson',
         'Duke',
-        'UConn'
+        'UConn',
+        'San Diego St.',
+        'Houston'
     ]
 
     r2_ppr = 0
     r2_remaining = [
-        'Yale',
-        'San Diego St.',
-        'Houston',
-        'Texas A&M',
     ]
 
     for team in selections:
@@ -141,10 +139,8 @@ def score_sweet_16(selections):
     s16_remaining = [
         'Alabama',
         'Clemson',
-        'Yale',
         'San Diego St.',
         'Houston',
-        'Texas A&M',
         'Duke',
         'Marquette',
         'Purdue',
@@ -178,10 +174,8 @@ def score_elite_8(selections):
     e8_remaining = [
         'Alabama',
         'Clemson',
-        'Yale',
         'San Diego St.',
         'Houston',
-        'Texas A&M',
         'Duke',
         'Marquette',
         'Purdue',
@@ -215,10 +209,8 @@ def score_final_four(selections):
     f4_remaining = [
         'Alabama',
         'Clemson',
-        'Yale',
         'San Diego St.',
         'Houston',
-        'Texas A&M',
         'Duke',
         'Marquette',
         'Purdue',
@@ -252,10 +244,8 @@ def score_final(selections):
     final_remaining = [
         'Alabama',
         'Clemson',
-        'Yale',
         'San Diego St.',
         'Houston',
-        'Texas A&M',
         'Duke',
         'Marquette',
         'Purdue',
