@@ -44,10 +44,23 @@ def parse_list(s):
         return None  # Return None if the parsing fails
     
 def identify_pack_black_brackets(id):
-    if id in ['DJGxMzdoTHWEcqhfvhTUu7kRpjMDgqzL7zLbM7eGkjHa','H5sSq7Dno6EqpCuV9x73prdEzrvQ1xZiPNzGS7nLZV2D','H4zRWRAyZFy9DYthqL5PGWudeYjvZncnU1dTwQWzim6X','2YXW5wx1gKsMGvPjy1DnkRDPiT5q9uJN31oPA7N2bKj5','62J3LW5f49ZA8ThaWv6F6xvqmpMYjFPyVfF1hfY8ZnmK','8fYhWG9DECR9vc14ha2eeBXxok5aTFF3sriADnNaTtXQ']:
-        return 'Pack'
-    elif id in ['6r8ssRbo2XJiiD8g8kjMsBKJi8rA8itu29oShxoQ2kUD','7wzxEsco9CkmPBqzrFA6jZxaWTDzo3kyi1FPwgRz2TbK']:
-        return 'Black'
+    if id in [
+        'DJGxMzdoTHWEcqhfvhTUu7kRpjMDgqzL7zLbM7eGkjHa',
+        'H5sSq7Dno6EqpCuV9x73prdEzrvQ1xZiPNzGS7nLZV2D',
+        'H4zRWRAyZFy9DYthqL5PGWudeYjvZncnU1dTwQWzim6X',
+        '2YXW5wx1gKsMGvPjy1DnkRDPiT5q9uJN31oPA7N2bKj5',
+        '62J3LW5f49ZA8ThaWv6F6xvqmpMYjFPyVfF1hfY8ZnmK',
+        '8fYhWG9DECR9vc14ha2eeBXxok5aTFF3sriADnNaTtXQ',
+        '6r8ssRbo2XJiiD8g8kjMsBKJi8rA8itu29oShxoQ2kUD',
+        '7wzxEsco9CkmPBqzrFA6jZxaWTDzo3kyi1FPwgRz2TbK',
+        '3DCc8NkCaSCeN4XzSDMPxkBTnZNS8WXSWpoU8zGNCgbs',
+        'BJoiYHJwJfFUfs7n8kzfKqgAgNt4ZtMFXMFxLTgMcNBS',
+        '6bBJMuW6ChwqLKNqoRDve5d2qVaHMbvEPCv9KxudZpQU',
+        'FN4aN5RcXy5QdiYQgjvm2hazosr9kpwC15d6urL5DdYC',
+        'DguHnu6395hBeacEzaminCYszJoh6YfHnHZw9Fc7tKxW',
+        'EETW8m38bGnS8TfkFi12sHuVKFmeUb7qCiekc3AcesnN'
+        ]:
+        return 'Pack-Black'
     else:
         return 'Loser'
 
@@ -390,7 +403,7 @@ with filter5:
 with filter6:
     filter_round_of_32 = st.multiselect("Round of 32", ncaa_tourney_teams, 'All')
 with filter7:
-    filter_pack_black = st.multiselect("Bracket Owner", ['All','Pack','Black','Loser'], 'All')
+    filter_pack_black = st.multiselect("Bracket Owner", ['All','Pack-Black','Loser'], 'All')
 
 df_filtered = df_brackets[
     ((df_brackets['bracket_owner'].isin(filter_pack_black)) | ('All' in filter_pack_black)) &
