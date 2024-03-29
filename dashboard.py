@@ -45,20 +45,20 @@ def parse_list(s):
     
 def identify_pack_black_brackets(id):
     if id in [
-        'DJGxMzdoTHWEcqhfvhTUu7kRpjMDgqzL7zLbM7eGkjHa',
-        'H5sSq7Dno6EqpCuV9x73prdEzrvQ1xZiPNzGS7nLZV2D',
-        'H4zRWRAyZFy9DYthqL5PGWudeYjvZncnU1dTwQWzim6X',
-        '2YXW5wx1gKsMGvPjy1DnkRDPiT5q9uJN31oPA7N2bKj5',
-        '62J3LW5f49ZA8ThaWv6F6xvqmpMYjFPyVfF1hfY8ZnmK',
         '8fYhWG9DECR9vc14ha2eeBXxok5aTFF3sriADnNaTtXQ',
-        '6r8ssRbo2XJiiD8g8kjMsBKJi8rA8itu29oShxoQ2kUD',
-        '7wzxEsco9CkmPBqzrFA6jZxaWTDzo3kyi1FPwgRz2TbK',
-        '3DCc8NkCaSCeN4XzSDMPxkBTnZNS8WXSWpoU8zGNCgbs',
         'BJoiYHJwJfFUfs7n8kzfKqgAgNt4ZtMFXMFxLTgMcNBS',
         '6bBJMuW6ChwqLKNqoRDve5d2qVaHMbvEPCv9KxudZpQU',
         'FN4aN5RcXy5QdiYQgjvm2hazosr9kpwC15d6urL5DdYC',
         'DguHnu6395hBeacEzaminCYszJoh6YfHnHZw9Fc7tKxW',
-        'EETW8m38bGnS8TfkFi12sHuVKFmeUb7qCiekc3AcesnN'
+        'EETW8m38bGnS8TfkFi12sHuVKFmeUb7qCiekc3AcesnN',
+        'FwUMWvRrCKTN1bt1p7HeqqDo7UTNJpyBYqJkAfhx3wi4',
+        'FN4aN5RcXy5QdiYQgjvm2hazosr9kpwC15d6urL5DdYC',
+        'BJoiYHJwJfFUfs7n8kzfKqgAgNt4ZtMFXMFxLTgMcNBS',
+        '8fYhWG9DECR9vc14ha2eeBXxok5aTFF3sriADnNaTtXQ',
+        '6bBJMuW6ChwqLKNqoRDve5d2qVaHMbvEPCv9KxudZpQU',
+        'ANKkiwXWeT2K3peKaJB9mMZBo3HxGkAQSoTY11KKoDSF',
+        'DguHnu6395hBeacEzaminCYszJoh6YfHnHZw9Fc7tKxW',
+        '2yB2T2VXhD2pY9YBCj8ijkvEaXj2HEfR837y5pfAuVbw'
         ]:
         return 'Pack-Black'
     else:
@@ -146,26 +146,26 @@ def score_round_2(selections):
 def score_sweet_16(selections):
     s16_score = 0
     s16_winners = [
+        'Clemson', # LOCKED
+        'UConn', # LOCKED
+        'Illinois', # LOCKED
+        'Alabama', # LOCKED
+        # 'Houston', # PROJ
+        # 'Gonzaga', # PROJ
+        # 'Creighton', # PROJ
+        # 'Marquette' # PROJ
     ]
 
     s16_ppr = 0
     s16_remaining = [
-        'Alabama',
-        'Clemson',
-        'San Diego St.',
         'Houston',
         'Duke',
         'Marquette',
         'Purdue',
-        'Iowa St.',
-        'North Carolina',
-        'Arizona',
         'Gonzaga',
         'Tennessee',
         'NC State',
-        'Illinois',
-        'Creighton',
-        'UConn'
+        'Creighton'
     ]
 
     for team in selections:
@@ -187,14 +187,10 @@ def score_elite_8(selections):
     e8_remaining = [
         'Alabama',
         'Clemson',
-        'San Diego St.',
         'Houston',
         'Duke',
         'Marquette',
         'Purdue',
-        'Iowa St.',
-        'North Carolina',
-        'Arizona',
         'Gonzaga',
         'Tennessee',
         'NC State',
@@ -222,14 +218,10 @@ def score_final_four(selections):
     f4_remaining = [
         'Alabama',
         'Clemson',
-        'San Diego St.',
         'Houston',
         'Duke',
         'Marquette',
         'Purdue',
-        'Iowa St.',
-        'North Carolina',
-        'Arizona',
         'Gonzaga',
         'Tennessee',
         'NC State',
@@ -257,14 +249,10 @@ def score_final(selections):
     final_remaining = [
         'Alabama',
         'Clemson',
-        'San Diego St.',
         'Houston',
         'Duke',
         'Marquette',
         'Purdue',
-        'Iowa St.',
-        'North Carolina',
-        'Arizona',
         'Gonzaga',
         'Tennessee',
         'NC State',
@@ -298,7 +286,8 @@ df_brackets = pd.read_csv(
 ## Add Scores
 df_brackets['r1_score'] = df_brackets['round_of_32'].apply(lambda  x: score_round_1(x))
 df_brackets['r2_score'] = df_brackets['sweet_16'].apply(lambda x: score_round_2(x)[0])
-df_brackets['total_score'] = df_brackets['r1_score'] + df_brackets['r2_score']
+df_brackets['s16_score'] = df_brackets['elite_8'].apply(lambda x: score_sweet_16(x)[0])
+df_brackets['total_score'] = df_brackets['r1_score'] + df_brackets['r2_score'] + df_brackets['s16_score']
 
 ## Add Points Possible Remaining
 df_brackets['r2_ppr'] = df_brackets['sweet_16'].apply(lambda x: score_round_2(x)[1]) 
