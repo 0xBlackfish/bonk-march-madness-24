@@ -49,7 +49,6 @@ def identify_pack_black_brackets(id):
         'BJoiYHJwJfFUfs7n8kzfKqgAgNt4ZtMFXMFxLTgMcNBS',
         '6bBJMuW6ChwqLKNqoRDve5d2qVaHMbvEPCv9KxudZpQU',
         'FN4aN5RcXy5QdiYQgjvm2hazosr9kpwC15d6urL5DdYC',
-        'DguHnu6395hBeacEzaminCYszJoh6YfHnHZw9Fc7tKxW',
         'EETW8m38bGnS8TfkFi12sHuVKFmeUb7qCiekc3AcesnN',
         'FwUMWvRrCKTN1bt1p7HeqqDo7UTNJpyBYqJkAfhx3wi4',
         'FN4aN5RcXy5QdiYQgjvm2hazosr9kpwC15d6urL5DdYC',
@@ -57,7 +56,6 @@ def identify_pack_black_brackets(id):
         '8fYhWG9DECR9vc14ha2eeBXxok5aTFF3sriADnNaTtXQ',
         '6bBJMuW6ChwqLKNqoRDve5d2qVaHMbvEPCv9KxudZpQU',
         'ANKkiwXWeT2K3peKaJB9mMZBo3HxGkAQSoTY11KKoDSF',
-        'DguHnu6395hBeacEzaminCYszJoh6YfHnHZw9Fc7tKxW',
         '2yB2T2VXhD2pY9YBCj8ijkvEaXj2HEfR837y5pfAuVbw'
         ]:
         return 'Pack-Black'
@@ -151,20 +149,16 @@ def score_sweet_16(selections):
         'Illinois', # LOCKED
         'Alabama', # LOCKED
         # 'Houston', # PROJ
-        # 'Gonzaga', # PROJ
-        # 'Creighton', # PROJ
-        # 'Marquette' # PROJ
+        'Purdue', # LOCKED
+        # 'Tennessee', # PROJ
+        'NC St.' # LOCKED
     ]
 
     s16_ppr = 0
     s16_remaining = [
         'Houston',
         'Duke',
-        'Marquette',
-        'Purdue',
-        'Gonzaga',
         'Tennessee',
-        'NC State',
         'Creighton'
     ]
 
