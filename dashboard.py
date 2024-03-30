@@ -195,15 +195,11 @@ def score_final_four(selections):
     f4_remaining = [
         'Alabama',
         'Clemson',
-        'Houston',
         'Duke',
-        'Marquette',
         'Purdue',
-        'Gonzaga',
         'Tennessee',
         'NC State',
         'Illinois',
-        'Creighton',
         'UConn'
     ]
 
@@ -226,15 +222,11 @@ def score_final(selections):
     final_remaining = [
         'Alabama',
         'Clemson',
-        'Houston',
         'Duke',
-        'Marquette',
         'Purdue',
-        'Gonzaga',
         'Tennessee',
         'NC State',
         'Illinois',
-        'Creighton',
         'UConn'
     ]
 
