@@ -46,17 +46,8 @@ def parse_list(s):
 def identify_pack_black_brackets(id):
     if id in [
         '8fYhWG9DECR9vc14ha2eeBXxok5aTFF3sriADnNaTtXQ',
-        'BJoiYHJwJfFUfs7n8kzfKqgAgNt4ZtMFXMFxLTgMcNBS',
-        '6bBJMuW6ChwqLKNqoRDve5d2qVaHMbvEPCv9KxudZpQU',
-        'FN4aN5RcXy5QdiYQgjvm2hazosr9kpwC15d6urL5DdYC',
-        'EETW8m38bGnS8TfkFi12sHuVKFmeUb7qCiekc3AcesnN',
-        'FwUMWvRrCKTN1bt1p7HeqqDo7UTNJpyBYqJkAfhx3wi4',
-        'FN4aN5RcXy5QdiYQgjvm2hazosr9kpwC15d6urL5DdYC',
-        'BJoiYHJwJfFUfs7n8kzfKqgAgNt4ZtMFXMFxLTgMcNBS',
-        '8fYhWG9DECR9vc14ha2eeBXxok5aTFF3sriADnNaTtXQ',
-        '6bBJMuW6ChwqLKNqoRDve5d2qVaHMbvEPCv9KxudZpQU',
         'ANKkiwXWeT2K3peKaJB9mMZBo3HxGkAQSoTY11KKoDSF',
-        '2yB2T2VXhD2pY9YBCj8ijkvEaXj2HEfR837y5pfAuVbw'
+        '4JJPn9VVWm8e7jxQdGHDFUkak2zQDcMfBtV7wtBqx3uU'
         ]:
         return 'Pack-Black'
     else:
@@ -148,18 +139,14 @@ def score_sweet_16(selections):
         'UConn', # LOCKED
         'Illinois', # LOCKED
         'Alabama', # LOCKED
-        # 'Houston', # PROJ
+        'Duke', # LOCKED
         'Purdue', # LOCKED
-        # 'Tennessee', # PROJ
+        'Tennessee', # LOCKED
         'NC St.' # LOCKED
     ]
 
     s16_ppr = 0
     s16_remaining = [
-        'Houston',
-        'Duke',
-        'Tennessee',
-        'Creighton'
     ]
 
     for team in selections:
@@ -181,15 +168,11 @@ def score_elite_8(selections):
     e8_remaining = [
         'Alabama',
         'Clemson',
-        'Houston',
         'Duke',
-        'Marquette',
         'Purdue',
-        'Gonzaga',
         'Tennessee',
         'NC State',
         'Illinois',
-        'Creighton',
         'UConn'
     ]
 
